@@ -59,7 +59,7 @@
             font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
-            list-style: none; /* Hides default triangle in some browsers */
+            list-style: none;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -75,7 +75,6 @@
             content: '-';
         }
 
-        /* Custom marker removal for Webkit */
         details.prerequisites-accordion summary::-webkit-details-marker {
             display: none;
         }
@@ -105,12 +104,12 @@
         }
 
         .section-header.new-user {
-            background-color: #e8f0fe; /* Light Blue */
+            background-color: #e8f0fe;
             color: #174ea6;
         }
 
         .section-header.update-user {
-            background-color: #fce8e6; /* Light Red */
+            background-color: #fce8e6;
             color: #c5221f;
         }
 
@@ -154,10 +153,98 @@
         .badge-new { background-color: #1a73e8; color: white; }
         .badge-update { background-color: #d93025; color: white; }
 
+        /* --- PAGE MANAGEMENT GUIDE --- */
+        .page-guide {
+            background-color: #e8f0fe;
+            border: 1px solid #4285f4;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .page-guide-icon {
+            font-size: 2rem;
+            color: #1a73e8;
+        }
+
+        .page-guide-content h3 {
+            margin-top: 0;
+            color: #1a73e8;
+            margin-bottom: 10px;
+        }
+
+        /* --- LAYOUT WIREFRAME GUIDE --- */
+        .layout-guide-container {
+            background-color: #f1f3f4;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .wireframe-canvas {
+            background-color: white;
+            border: 2px solid #bdc1c6;
+            aspect-ratio: 16/9; /* Standard report ratio */
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 40px 60px 1fr 1fr; /* Title, Scores, Row 1, Row 2 */
+            gap: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .wf-element {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 4px;
+            padding: 5px;
+        }
+
+        /* Element Types */
+        .wf-title { 
+            grid-column: 1 / 4; 
+            background: #f8f9fa; 
+            border: 1px dashed #5f6368; 
+            color: #5f6368;
+        }
+        .wf-filter { 
+            grid-column: 4 / 5; 
+            background: #fce8e6; 
+            border: 1px solid #d93025; 
+            color: #d93025;
+        }
+        .wf-score { 
+            background: #fff; 
+            border: 1px solid #1a73e8; 
+            color: #1a73e8;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .wf-chart { 
+            background: #e8f0fe; 
+            border: 1px dashed #1a73e8; 
+            color: #174ea6;
+        }
+        
+        /* Specific Grid Placements for Charts */
+        .wf-bar { grid-column: 1 / 3; grid-row: 3; }
+        .wf-pie { grid-column: 3 / 5; grid-row: 3; }
+        .wf-scatter { grid-column: 1 / 3; grid-row: 4; }
+        .wf-box { grid-column: 3 / 5; grid-row: 4; }
+
+
         /* --- INSTRUCTIONAL BOXES --- */
         .scenario-box {
-            background-color: #e8f0fe;
-            border-left: 5px solid #1a73e8;
+            background-color: #f1f3f4;
+            border-left: 5px solid #5f6368;
             padding: 20px;
             border-radius: 0 8px 8px 0;
             margin: 30px 0;
@@ -195,6 +282,21 @@
         .tip::before {
             content: "💡 TIP: ";
             font-weight: bold;
+        }
+        
+        .config-check {
+            background-color: #e6f4ea;
+            border-left: 5px solid #137333;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        .config-check::before {
+            content: "🛠️ PREPARATION REQUIRED: ";
+            font-weight: bold;
+            color: #137333;
         }
 
         /* --- VISUAL REFERENCE CONTAINERS --- */
@@ -334,7 +436,6 @@
             position: relative;
         }
 
-        /* The donut hole */
         .css-pie-chart::after {
             content: "";
             position: absolute;
@@ -402,7 +503,7 @@
             position: absolute;
             width: 8px;
             height: 8px;
-            background-color: #4285f4; /* Blue dot */
+            background-color: #4285f4;
             border-radius: 50%;
             opacity: 0.6;
             transform: translate(-50%, 50%);
@@ -430,6 +531,75 @@
         .d19 { bottom: 68%; left: 60%; }
         .d20 { bottom: 82%; left: 88%; }
 
+        /* --- TASK 5: BOX PLOT CSS --- */
+        .boxplot-container {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            border-left: 2px solid #9aa0a6;
+            border-bottom: 2px solid #9aa0a6;
+            position: relative;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 0;
+            box-sizing: border-box;
+        }
+
+        .boxplot-group {
+            position: relative;
+            width: 20%;
+            height: 100%;
+        }
+
+        .box-whisker-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            background-color: #3c4043;
+            z-index: 1;
+        }
+
+        .box-rect {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            background-color: #e8f0fe;
+            border: 2px solid #4285f4;
+            z-index: 2;
+        }
+
+        .box-median {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #174ea6;
+            z-index: 3;
+        }
+
+        .box-cap {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 2px;
+            background-color: #3c4043;
+            z-index: 1;
+        }
+        
+        .box-label {
+            position: absolute;
+            bottom: -40px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #5f6368;
+        }
+
         /* --- RESPONSIVE --- */
         @media (max-width: 600px) {
             .bar-label { font-size: 0.6rem; bottom: -60px; }
@@ -446,8 +616,7 @@
         <summary>⚠️ STOP & CHECK: Prerequisites & Data Setup (Click to Expand)</summary>
         <div class="accordion-content">
             <p>This lesson requires a specific dataset that includes unique student identifiers. Please select the option below that matches your current status.</p>
-
-            <!-- SECTION 1: GETTING STARTED (NEW USERS) -->
+            
             <div class="section-container">
                 <div class="section-header new-user">
                     <span class="badge badge-new">Option 1</span>
@@ -461,52 +630,27 @@
                             https://docs.google.com/spreadsheets/d/1VNZNuPJLXiHWJwXdOXYWO5t65FmqlWmoSNu6vawKHqU/edit?usp=sharing
                         </div>
                     </div>
-
+                    <!-- ... abbreviated steps ... -->
                     <div class="step">
-                        <span class="step-title">Step 2: Create a Report</span>
-                        Go to <a href="https://lookerstudio.google.com/" target="_blank">lookerstudio.google.com</a>, click <strong>Create</strong>, then select <strong>Report</strong>.
-                    </div>
-
-                    <div class="step">
-                        <span class="step-title">Step 3: Connect Data</span>
-                        <ol style="margin-top: 5px; padding-left: 20px;">
-                            <li>In the "Add data to report" window, select <strong>Google Sheets</strong>.</li>
-                            <li>Select the <strong>URL</strong> tab (top right of the list).</li>
-                            <li>Paste the link from Step 1 into the URL field.</li>
-                            <li>Click <strong>Add</strong>.</li>
-                            <li>Confirm by clicking <strong>Add to Report</strong>.</li>
-                        </ol>
+                        <span class="step-title">Step 3: Connect Data via URL</span>
+                        Use the "URL" tab in Looker Studio's Google Sheets connector to add the link above.
                     </div>
                 </div>
             </div>
 
-            <!-- SECTION 2: UPDATING DATA (EXISTING USERS) -->
             <div class="section-container">
                 <div class="section-header update-user">
                     <span class="badge badge-update">Option 2</span>
-                    <span>Update Existing Data (Fixing the ID Issue)</span>
+                    <span>Update Existing Data</span>
                 </div>
                 <div class="section-body">
                     <div class="step">
-                        <span class="step-title">Step 1: Remove the Old Data</span>
-                        <ol style="margin-top: 5px; padding-left: 20px;">
-                            <li>Open your existing Looker Studio report.</li>
-                            <li>In the top menu bar, click <strong>Resource</strong> &rarr; <strong>Manage added data sources</strong>.</li>
-                            <li>Find your old "StudentPerformance" CSV file and click <strong>Remove</strong>.</li>
-                            <li>Click <strong>Close</strong>.</li>
-                        </ol>
+                        <span class="step-title">Step 1: Remove Old Data</span>
+                        Go to <strong>Resource > Manage added data sources</strong> and remove the old file.
                     </div>
-
                     <div class="step">
-                        <span class="step-title">Step 2: Add the New Data</span>
-                        <ol style="margin-top: 5px; padding-left: 20px;">
-                            <li>In the toolbar, click <strong>Add data</strong>.</li>
-                            <li>Select <strong>Google Sheets</strong> &rarr; <strong>URL</strong> tab.</li>
-                            <li>Paste this link: <br>
-                                <span style="font-family: monospace; background: #eee;">https://docs.google.com/spreadsheets/d/1VNZNuPJLXiHWJwXdOXYWO5t65FmqlWmoSNu6vawKHqU/edit?usp=sharing</span>
-                            </li>
-                            <li>Click <strong>Add</strong> and then <strong>Add to Report</strong>.</li>
-                        </ol>
+                        <span class="step-title">Step 2: Add New Data</span>
+                        Add the Google Sheet via URL using the link provided in Option 1.
                     </div>
                 </div>
             </div>
@@ -521,129 +665,75 @@
         <strong>Scenario:</strong> You have been hired as a Junior Data Analyst for the City School District. The Superintendent has provided you with a refined dataset containing test scores and demographic data for 1,000 students. They have asked you to create an interactive dashboard in Looker Studio to help the administration understand which factors—such as parental education or test preparation—might be influencing student success.
     </div>
 
+    <!-- PAGE MANAGEMENT GUIDE -->
+    <div class="page-guide">
+        <div class="page-guide-icon">📄</div>
+        <div class="page-guide-content">
+            <h3>Setting Up Your Report Draft</h3>
+            <p>For this investigation, we will compile all our findings onto a <strong>single, comprehensive dashboard page</strong>. This allows us to see correlations and patterns at a glance.</p>
+            <p><strong>How to Prepare your Canvas:</strong></p>
+            <ol>
+                <li>In the top toolbar of Looker Studio, click <strong>Add page</strong>.</li>
+                <li>Rename this new page to <strong>"Draft Report"</strong>.</li>
+                <li>You will place <strong>all</strong> charts from the tasks below onto this one canvas.</li>
+            </ol>
+        </div>
+    </div>
+
     <p>
         Welcome to your data visualization training. In this session, we will move beyond simple spreadsheets and create a dynamic report. 
-        By the end of this lesson, you will have built a professional dashboard that visualizes the key insights hidden within the rows and columns of your data.
     </p>
 
     <hr>
 
     <!-- TASK 1 -->
     <h2>Task 1: The "At a Glance" Metrics</h2>
-    
     <div class="task-box">
-        <p>First, we need to establish the baseline. Every good dashboard starts with high-level summary statistics (KPIs).</p>
+        <p><em>Place these scorecards at the top of your "Draft Report" page.</em></p>
         <ol>
-            <li>In the toolbar, click <strong>Add a chart</strong> and select <strong>Scorecard</strong>.</li>
-            <li>Place the scorecard at the top left of your canvas. Ideally, this first card counts the <strong>Total Students</strong> (Record Count).</li>
-            <li>Copy and paste this scorecard three times to create a row of four cards.</li>
-            <li>For the new cards, change the <strong>Metric</strong> to display:
-                <ul>
-                    <li>Math Score</li>
-                    <li>Reading Score</li>
-                    <li>Writing Score</li>
-                </ul>
-            </li>
+            <li>Add a <strong>Scorecard</strong> for <strong>Total Students</strong> (Record Count).</li>
+            <li>Create three more scorecards for <strong>Avg Math</strong>, <strong>Avg Reading</strong>, and <strong>Avg Writing</strong>.</li>
+            <li>Ensure aggregation is set to <strong>AVERAGE</strong> for scores.</li>
         </ol>
-
-        <div class="tip">
-            Looker Studio defaults to <strong>SUM</strong> for numeric fields. You must change the aggregation to <strong>AVERAGE</strong> for scores. <br><br>
-            <strong>Warning:</strong> Your dataset now contains a <code>student</code> column (ID). Since this is a unique ID (Primary Key), <strong>never</strong> use SUM or AVERAGE on this field. It is strictly for identifying individual records.
-        </div>
     </div>
-
     <div class="reference-container">
         <div class="scorecard-container">
-            <div class="css-scorecard">
-                <span class="scorecard-label">Total Students</span>
-                <span class="scorecard-value">1,000</span>
-            </div>
-            <div class="css-scorecard">
-                <span class="scorecard-label">Avg Math</span>
-                <span class="scorecard-value">66.1</span>
-            </div>
-            <div class="css-scorecard">
-                <span class="scorecard-label">Avg Reading</span>
-                <span class="scorecard-value">69.2</span>
-            </div>
-            <div class="css-scorecard">
-                <span class="scorecard-label">Avg Writing</span>
-                <span class="scorecard-value">68.1</span>
-            </div>
+            <div class="css-scorecard"><span class="scorecard-label">Total Students</span><span class="scorecard-value">1,000</span></div>
+            <div class="css-scorecard"><span class="scorecard-label">Avg Math</span><span class="scorecard-value">66.1</span></div>
+            <div class="css-scorecard"><span class="scorecard-label">Avg Reading</span><span class="scorecard-value">69.2</span></div>
+            <div class="css-scorecard"><span class="scorecard-label">Avg Writing</span><span class="scorecard-value">68.1</span></div>
         </div>
-        <p class="image-caption">Reference: Your top row should display these average values.</p>
     </div>
 
     <!-- TASK 2 -->
     <h2>Task 2: Education Impact (Bar Chart)</h2>
-
     <div class="task-box">
-        <p>Does a parent's education level correlate with their child's math score? Let's visualize this using a vertical bar chart.</p>
         <ol>
-            <li>Add a <strong>Column Chart</strong> to your canvas.</li>
-            <li>Set the <strong>Dimension</strong> to <code>parental level of education</code>.</li>
-            <li>Set the <strong>Metric</strong> to <code>math score</code>.</li>
-            <li>Ensure the metric aggregation is set to <strong>Average</strong>.</li>
-            <li>In the Sort options, set it to sort by <strong>Metric (Descending)</strong> so the highest scores appear on the left.</li>
+            <li>Add a <strong>Column Chart</strong>.</li>
+            <li>Dimension: <code>parental level of education</code>. Metric: <code>math score</code> (Average).</li>
+            <li>Sort by Metric (Descending).</li>
         </ol>
     </div>
-
     <div class="reference-container">
         <div class="bar-chart-container">
-            <!-- Values approximated based on dataset -->
-            <div class="bar-group">
-                <div class="css-bar" style="height: 73%;">
-                    <span class="bar-value">73.6</span>
-                </div>
-                <span class="bar-label">master's degree</span>
-            </div>
-            <div class="bar-group">
-                <div class="css-bar" style="height: 69%;">
-                    <span class="bar-value">69.4</span>
-                </div>
-                <span class="bar-label">bachelor's degree</span>
-            </div>
-            <div class="bar-group">
-                <div class="css-bar" style="height: 68%;">
-                    <span class="bar-value">67.9</span>
-                </div>
-                <span class="bar-label">associate's degree</span>
-            </div>
-            <div class="bar-group">
-                <div class="css-bar" style="height: 67%;">
-                    <span class="bar-value">67.1</span>
-                </div>
-                <span class="bar-label">some college</span>
-            </div>
-            <div class="bar-group">
-                <div class="css-bar" style="height: 63%;">
-                    <span class="bar-value">63.5</span>
-                </div>
-                <span class="bar-label">some high school</span>
-            </div>
-            <div class="bar-group">
-                <div class="css-bar" style="height: 62%;">
-                    <span class="bar-value">62.1</span>
-                </div>
-                <span class="bar-label">high school</span>
-            </div>
+            <div class="bar-group"><div class="css-bar" style="height: 73%;"><span class="bar-value">73.6</span></div><span class="bar-label">master's</span></div>
+            <div class="bar-group"><div class="css-bar" style="height: 69%;"><span class="bar-value">69.4</span></div><span class="bar-label">bachelor's</span></div>
+            <div class="bar-group"><div class="css-bar" style="height: 68%;"><span class="bar-value">67.9</span></div><span class="bar-label">associate's</span></div>
+            <div class="bar-group"><div class="css-bar" style="height: 67%;"><span class="bar-value">67.1</span></div><span class="bar-label">some college</span></div>
+            <div class="bar-group"><div class="css-bar" style="height: 63%;"><span class="bar-value">63.5</span></div><span class="bar-label">some high</span></div>
+            <div class="bar-group"><div class="css-bar" style="height: 62%;"><span class="bar-value">62.1</span></div><span class="bar-label">high school</span></div>
         </div>
-        <p class="image-caption">Reference: Expected Average Math Scores by Parental Education.</p>
+        <p class="image-caption">Reference: Parental Education vs Math Score</p>
     </div>
 
     <!-- TASK 3 -->
     <h2>Task 3: Demographics (Donut Chart)</h2>
-
     <div class="task-box">
-        <p>Let's look at the composition of our student body based on the anonymized "Race/Ethnicity" groups.</p>
         <ol>
-            <li>Add a <strong>Donut Chart</strong> (or Pie Chart) to the canvas.</li>
-            <li>Set the <strong>Dimension</strong> to <code>race/ethnicity</code>.</li>
-            <li>Set the <strong>Metric</strong> to <code>Record Count</code>.</li>
-            <li>This will automatically calculate the percentage of the total student population for each group.</li>
+            <li>Add a <strong>Donut Chart</strong>.</li>
+            <li>Dimension: <code>race/ethnicity</code>. Metric: <code>Record Count</code>.</li>
         </ol>
     </div>
-
     <div class="reference-container">
         <div class="pie-layout">
             <div class="css-pie-chart"></div>
@@ -655,80 +745,157 @@
                 <li><span class="swatch" style="background: #ab47bc;"></span> Group A (8.9%)</li>
             </ul>
         </div>
-        <p class="image-caption">Reference: The breakdown of student groups.</p>
     </div>
 
     <!-- TASK 4 -->
     <h2>Task 4: Correlation Analysis (Scatter Plot)</h2>
-
     <div class="task-box">
-        <p>Is there a relationship between reading and writing skills? A scatter plot is perfect for comparing two numerical variables to see if they trend together.</p>
         <ol>
             <li>Add a <strong>Scatter Chart</strong>.</li>
-            <li>Set the <strong>Dimension</strong> to <code>student</code> (This is the unique ID from the new Google Sheet. Using this ensures every dot represents one specific student).</li>
-            <li>Set <strong>Metric X</strong> to <code>reading score</code>.</li>
-            <li>Set <strong>Metric Y</strong> to <code>writing score</code>.</li>
-            <li>Analyze the pattern. A diagonal line moving up and to the right indicates a strong positive correlation.</li>
+            <li>Dimension: <code>student</code> (The Unique ID).</li>
+            <li>Metric X: <code>reading score</code>. Metric Y: <code>writing score</code>.</li>
         </ol>
     </div>
-
     <div class="reference-container">
         <div class="scatter-container">
             <span class="scatter-axis-label-y">Writing Score</span>
             <span class="scatter-axis-label-x">Reading Score</span>
-            
-            <!-- CSS Dots simulating the positive correlation trend -->
-            <div class="scatter-dot d1"></div>
-            <div class="scatter-dot d2"></div>
-            <div class="scatter-dot d3"></div>
-            <div class="scatter-dot d4"></div>
-            <div class="scatter-dot d5"></div>
-            <div class="scatter-dot d6"></div>
-            <div class="scatter-dot d7"></div>
-            <div class="scatter-dot d8"></div>
-            <div class="scatter-dot d9"></div>
-            <div class="scatter-dot d10"></div>
-            <div class="scatter-dot d11"></div>
-            <div class="scatter-dot d12"></div>
-            <div class="scatter-dot d13"></div>
-            <div class="scatter-dot d14"></div>
-            <div class="scatter-dot d15"></div>
-            <div class="scatter-dot d16"></div>
-            <div class="scatter-dot d17"></div>
-            <div class="scatter-dot d18"></div>
-            <div class="scatter-dot d19"></div>
-            <div class="scatter-dot d20"></div>
+            <div class="scatter-dot d1"></div><div class="scatter-dot d2"></div><div class="scatter-dot d3"></div>
+            <div class="scatter-dot d4"></div><div class="scatter-dot d5"></div><div class="scatter-dot d6"></div>
+            <div class="scatter-dot d7"></div><div class="scatter-dot d8"></div><div class="scatter-dot d9"></div>
+            <div class="scatter-dot d10"></div><div class="scatter-dot d11"></div><div class="scatter-dot d12"></div>
+            <div class="scatter-dot d13"></div><div class="scatter-dot d14"></div><div class="scatter-dot d15"></div>
+            <div class="scatter-dot d16"></div><div class="scatter-dot d17"></div><div class="scatter-dot d18"></div>
+            <div class="scatter-dot d19"></div><div class="scatter-dot d20"></div>
         </div>
-        <p class="image-caption">Reference: A strong positive correlation (upward diagonal trend).</p>
+        <p class="image-caption">Reference: Positive Correlation Trend</p>
     </div>
 
-    <!-- TASK 5 -->
-    <h2>Task 5: Interactivity (The Filter)</h2>
-
+    <!-- TASK 5 (NEW) -->
+    <h2>Task 5: Distribution Analysis (Box Plot)</h2>
+    
     <div class="task-box">
-        <p>Static reports are useful, but interactive dashboards are powerful. Let's add a filter to allow the Superintendent to segment the data.</p>
+        <p>A Box Plot requires 5 specific values to visualize data spread (Min, 25th Percentile, Median, 75th Percentile, Max). Since our dataset only has one "math score" column, we must manually create 5 fields to satisfy the chart's requirements.</p>
+
+        <div class="config-check">
+            <strong>Phase 1: Data Preparation</strong>
+            <p>Before adding the chart, you must create 5 distinct fields in your data source. We will name them starting with <strong>Math_</strong> so we clearly know these fields are visualizing math scores (and not Reading or Writing).</p>
+            <ol>
+                <li>In Looker Studio, click <strong>Resource</strong> > <strong>Manage added data sources</strong> > <strong>Edit</strong>.</li>
+                <li>Click <strong>+ ADD A FIELD</strong> in the top right.</li>
+                <li><strong>Field 1:</strong> Name it <code>Math_Plot_Min</code>. Formula: <code>math score</code>. Click Save, then Back.</li>
+                <li>Repeatedly click <strong>+ ADD A FIELD</strong> to create 4 more fields with the exact same formula (<code>math score</code>) but different names:
+                    <ul>
+                        <li><code>Math_Plot_Q1</code></li>
+                        <li><code>Math_Plot_Median</code></li>
+                        <li><code>Math_Plot_Q3</code></li>
+                        <li><code>Math_Plot_Max</code></li>
+                    </ul>
+                </li>
+                <li>Click <strong>Done</strong> to finish editing the data source.</li>
+            </ol>
+        </div>
+
+        <div class="task-box" style="border: 1px solid #4285f4; margin-top: 20px;">
+            <strong>Phase 2: Configuring the Chart</strong>
+            <ol>
+                <li>Add a <strong>Box Plot</strong> chart to your canvas.</li>
+                <li>Set <strong>Dimension</strong> to <code>gender</code>.</li>
+                <li>Now, drag your 5 new fields into the <strong>Metrics</strong> section in this exact order:
+                    <ol>
+                        <li><strong>Min:</strong> Drag <code>Math_Plot_Min</code>. Click the pencil icon next to it and change aggregation to <strong>MIN</strong>.</li>
+                        <li><strong>Lower Quartile:</strong> Drag <code>Math_Plot_Q1</code>. Change aggregation to <strong>AVERAGE</strong> (Note: This is a simulation for this lesson).</li>
+                        <li><strong>Median:</strong> Drag <code>Math_Plot_Median</code>. Change aggregation to <strong>MEDIAN</strong>.</li>
+                        <li><strong>Upper Quartile:</strong> Drag <code>Math_Plot_Q3</code>. Change aggregation to <strong>AVERAGE</strong> (Simulation).</li>
+                        <li><strong>Max:</strong> Drag <code>Math_Plot_Max</code>. Change aggregation to <strong>MAX</strong>.</li>
+                    </ol>
+                </li>
+            </ol>
+            <p><em>Note: Because Looker Studio cannot easily calculate percentiles from Sheets data, we are approximating the quartiles using Averages for the purpose of learning the chart layout tool.</em></p>
+        </div>
+    </div>
+
+    <div class="reference-container">
+        <div class="boxplot-container">
+            <span class="scatter-axis-label-y">Math Score</span>
+            <div class="boxplot-group">
+                <div class="box-whisker-line" style="top: 10%; bottom: 90%;"></div>
+                <div class="box-cap" style="top: 10%;"></div>
+                <div class="box-rect" style="top: 26%; height: 17%;">
+                    <div class="box-median" style="top: 45%;"></div>
+                </div>
+                <div class="box-whisker-line" style="top: 43%; bottom: 10%;"></div>
+                <div class="box-cap" style="bottom: 10%;"></div>
+                <div class="box-label">female</div>
+            </div>
+            <div class="boxplot-group">
+                <div class="box-whisker-line" style="top: 5%; bottom: 90%;"></div>
+                <div class="box-cap" style="top: 5%;"></div>
+                <div class="box-rect" style="top: 21%; height: 20%;">
+                    <div class="box-median" style="top: 50%;"></div>
+                </div>
+                <div class="box-whisker-line" style="top: 41%; bottom: 25%;"></div>
+                <div class="box-cap" style="bottom: 25%;"></div>
+                <div class="box-label">male</div>
+            </div>
+        </div>
+        <p class="image-caption">Reference: Box Plot comparing distribution of scores.</p>
+    </div>
+
+    <!-- TASK 6 -->
+    <h2>Task 6: Interactivity (The Filter)</h2>
+    <div class="task-box">
         <ol>
-            <li>In the top menu, click <strong>Add a control</strong>.</li>
-            <li>Select <strong>Drop-down list</strong>.</li>
-            <li>Place the drop-down at the top right of your dashboard.</li>
-            <li>Set the <strong>Control Field</strong> to <code>test preparation course</code>.</li>
-            <li>Switch to <strong>View Mode</strong> and try selecting "Completed" vs "None" to see how the charts update dynamically.</li>
+            <li>Add a <strong>Drop-down list</strong> control.</li>
+            <li>Control Field: <code>test preparation course</code>.</li>
+            <li>Place this drop-down list at the <strong>top of your report</strong> so it is easily accessible.</li>
+            <li>Test filtering between "Completed" and "None" to see how it affects all charts on the page.</li>
         </ol>
     </div>
 
     <hr>
 
-    <h2>Final Step: Submission</h2>
+    <h2>Final Polish: Layout & Arrangement</h2>
+    <p>A messy dashboard is hard to read. Before you submit, take a moment to arrange your elements cleanly. Use the layout guide below as a reference.</p>
 
+    <div class="layout-guide-container">
+        <p style="font-size: 0.9rem; margin-bottom: 10px; color: #555;"><strong>Recommended "Draft Report" Layout:</strong></p>
+        
+        <!-- CSS Wireframe Layout -->
+        <div class="wireframe-canvas">
+            <!-- Title Row -->
+            <div class="wf-element wf-title">Report Title</div>
+            <div class="wf-element wf-filter">Filter</div>
+            
+            <!-- Scorecards Row -->
+            <div class="wf-element wf-score">Score 1</div>
+            <div class="wf-element wf-score">Score 2</div>
+            <div class="wf-element wf-score">Score 3</div>
+            <div class="wf-element wf-score">Score 4</div>
+            
+            <!-- Middle Row Charts -->
+            <div class="wf-element wf-chart wf-bar">Bar Chart (Education)</div>
+            <div class="wf-element wf-chart wf-pie">Donut Chart (Demographics)</div>
+            
+            <!-- Bottom Row Charts -->
+            <div class="wf-element wf-chart wf-scatter">Scatter Plot (Correlation)</div>
+            <div class="wf-element wf-chart wf-box">Box Plot (Distributions)</div>
+        </div>
+    </div>
+
+    <div class="task-box">
+        <ul>
+            <li><strong>Align Charts:</strong> Ensure the left and right edges of charts line up vertically.</li>
+            <li><strong>Consistent Spacing:</strong> Leave equal whitespace between all elements.</li>
+            <li><strong>Headers:</strong> Add small text headers above each chart section if needed (e.g., "Demographic Breakdown").</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <h2>Final Step: Submission</h2>
     <div class="task-box" style="border-left: 5px solid #188038;">
-        <h3>Ready to Submit?</h3>
-        <p>Once your dashboard matches the references above and your filter is working:</p>
-        <ol>
-            <li>Click the blue <strong>Share</strong> button in the top right corner of Looker Studio.</li>
-            <li>Change the access settings to <strong>"Anyone with the link can View"</strong>.</li>
-            <li>Click <strong>Copy Link</strong>.</li>
-            <li>Paste your report link into the assignment submission portal.</li>
-        </ol>
+        <p>Share the report with "Anyone with the link can View" and submit the URL.</p>
     </div>
 
 </body>
