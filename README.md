@@ -21,7 +21,7 @@ In this scenario-based lesson, learners act as **Junior Data Analysts** for a sc
 |-----------|-------------|
 | `intro.html` | **Start Here**: The landing page that sets the scenario and guides learners through the critical data setup process. |
 | `lesson_plan.html` | **Main Lesson**: The step-by-step interactive guide with task instructions and visual references. |
-| `StudentPerformance ver2.csv` | **Archived Data**: The raw dataset used for this lesson (contains the unique student ID). |
+| `StudentPerformance ver2.csv` | **Archived Data**: The raw dataset used for this lesson (contains the unique student ID). Reference: https://www.kaggle.com/datasets/rkiattisak/student-performance-in-mathematics|
 
 ---
 
